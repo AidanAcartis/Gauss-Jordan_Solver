@@ -1,44 +1,70 @@
+# Gauss-Jordan Solver
+
+This project automates the resolution of a linear system of equations using the **Gauss-Jordan elimination method**.  
+All calculations are done with exact fractions to avoid rounding errors.
+
 ---
 
-# Résolution de Systèmes Linéaires avec Fractions en Java
+## 🔍 Mathematical Method
 
-Ce projet Java permet de résoudre un système d'équations linéaires à l'aide de la méthode d'échelonnement (réduction de Gauss), en travaillant avec des **fractions exactes** plutôt que des flottants pour éviter les erreurs d'arrondi.
-
-## 🧠 Fonctionnalités
-
-- Entrée d'une matrice `P` de coefficients sous forme de fractions (ex: `2/3`, `5`, etc.).
-- Entrée du vecteur `B` (second membre) également sous forme de fractions.
-- Résolution du système via la méthode de réduction en forme échelonnée.
-- Affichage de la solution du système (ou détection d'incompatibilité).
-
-## 📂 Structure du projet
-
-```
-.
-├── Main.java          // Point d'entrée du programme
-├── Solver.java        // Logique de résolution
-├── MatrixUtils.java   // Méthodes utilitaires pour manipuler les matrices
-└── Fraction.java      // Classe de gestion des fractions
-```
-
-## 🔧 Compilation & Exécution
-
-### 1. Compilation
-
-```bash
-javac Main.java Solver.java MatrixUtils.java Fraction.java
-```
-
-### 2. Exécution
-
-```bash
-java Main
+A linear system is written as:
 
 ```
 
-### Exemple de session
+P * X = B
 
 ```
+
+Where:
+- `P` is the coefficient matrix (m x n)
+- `X` is the unknown vector
+- `B` is the constant vector
+
+### Gauss-Jordan elimination
+
+The algorithm transforms the augmented matrix `(P | B)` into **Reduced Row Echelon Form (RREF)**.
+
+The goal is to obtain:
+- pivot = 1
+- zeros above and below each pivot
+
+Once the matrix is in RREF, the solution is directly read from the last column.
+
+---
+
+## 🧠 Algorithm (High Level)
+
+1. For each row and column:
+   - Find the first non-zero element (pivot)
+   - Divide the row by the pivot to make it 1
+   - Eliminate all other values in that column (above and below the pivot)
+2. Check for inconsistency:
+   - If a row becomes `[0 0 0 | b]` with `b != 0` → no solution
+3. Reorder rows so that zero rows are at the bottom
+4. Output the solution vector
+
+---
+
+## 📁 Project Structure
+
+```
+
+Gauss-Jordan_Solver/
+├── Fraction.java
+├── FractionApp.java
+├── Main.java
+├── MatrixUtils.java
+├── Solver.java
+└── README.md
+
+```
+
+---
+
+## 📌 Example Session
+
+```
+
 Nombre de lignes : 4
 Nombre de colonnes : 3
 Entrez les coefficients de la matrice P (forme a/b) :
@@ -90,30 +116,13 @@ X[2] = 2/7
 
 ```
 
-## 📌 Remarques
-
-- Le format accepté pour les fractions est `a/b` ou simplement `a`.
-- Toute opération (addition, soustraction, multiplication, division, inversion) est faite avec des entiers exacts.
-
-## 📘 Classes principales
-
-### `Fraction`
-- Gère toutes les opérations arithmétiques sur des fractions.
-- Réduction automatique au plus petit dénominateur commun.
-
-### `Solver`
-- Contient la logique principale pour résoudre un système linéaire via la méthode de Gauss.
-
-### `MatrixUtils`
-- Fournit les fonctions de manipulation de matrices (échelonnement, impression, réorganisation...).
-
-## ⚠️ Gestion des erreurs
-
-- Division par zéro détectée et levée via une exception.
-- Système incompatible détecté lorsqu’une ligne nulle correspond à un second membre non nul.
-
-## 📄 Licence
-
-Ce projet est libre pour un usage personnel ou éducatif.
-
 ---
+
+## 🚀 How to run
+
+```
+
+javac *.java
+java Main
+
+```
