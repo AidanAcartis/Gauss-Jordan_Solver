@@ -5,7 +5,7 @@ All calculations are done with exact fractions to avoid rounding errors.
 
 ---
 
-## 🔍 Mathematical Method
+## Mathematical Method
 
 A linear system is written as:
 
@@ -32,7 +32,7 @@ Once the matrix is in RREF, the solution is directly read from the last column.
 
 ---
 
-## 🧠 Algorithm (High Level)
+## Algorithm (High Level)
 
 1. For each row and column:
    - Find the first non-zero element (pivot)
@@ -45,7 +45,7 @@ Once the matrix is in RREF, the solution is directly read from the last column.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 
@@ -61,7 +61,7 @@ Gauss-Jordan_Solver/
 
 ---
 
-## 📌 Example Session
+## Example Session
 
 ```
 
@@ -118,7 +118,7 @@ X[2] = 2/7
 
 ---
 
-## 🚀 How to run
+## How to run
 
 ```
 
